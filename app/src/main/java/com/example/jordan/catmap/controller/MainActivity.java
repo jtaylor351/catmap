@@ -16,9 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.jordan.catmap.R;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -68,9 +74,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             // Handle the camera action
         }
-//        else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
+        else if (id == R.id.nav_home) {
+            Intent intent = new Intent(this, MainActivity.class);
+
+        }
+//        else if (id == R.id.nav_slideshow) {
 //
 //        } else if (id == R.id.nav_manage) {
 //
