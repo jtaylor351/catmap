@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jordan.catmap">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application>
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,8 +24,12 @@
 
         <meta-data
             android:name="com.google.android.geo.AIzaSyB3GtMOl7itNhue2uc_OOb2MwPDzDOxKgA"
-            android:value="AIzaSyB3GtMOl7itNhue2uc_OOb2MwPDzDOxKgA"/>
+            android:value="AIzaSyB3GtMOl7itNhue2uc_OOb2MwPDzDOxKgA" />
 
+        <activity
+            android:name=".controller.RegistrationActivity"
+            android:label="@string/title_activity_registration"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+
 </manifest>
