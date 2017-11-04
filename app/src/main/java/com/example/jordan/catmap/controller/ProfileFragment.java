@@ -64,7 +64,7 @@ public class ProfileFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_map, container, false);
+        View view= inflater.inflate(R.layout.fragment_profile, container, false);
 
         // NOTE : We are calling the onFragmentInteraction() declared in the MainActivity
         // ie we are sending "Map" as title parameter when fragment1 is activated

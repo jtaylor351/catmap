@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.jordan.catmap.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -27,9 +28,12 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
+        OnMapReadyCallback,
         MapFragment.OnFragmentInteractionListener,
         ProfileFragment.OnFragmentInteractionListener,
         SafeWalk.OnFragmentInteractionListener{
+
+    private GoogleMap mMap ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +57,6 @@ public class MainActivity extends AppCompatActivity
 
         //NOTE:  Open fragment1 initially.
         MapFragment fragmentMain = new MapFragment();
-        //throw new RuntimeExecutionException(new Throwable("Please"));
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame,fragmentMain).commit();
     }
 
@@ -92,7 +95,6 @@ public class MainActivity extends AppCompatActivity
             fragment = new ProfileFragment();
         } else if (id == R.id.nav_safe_walk) {
             fragment = new SafeWalk();
-
         } else if (id == R.id.nav_phone_friend) {
             String phone = "+17708963043";
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
@@ -100,10 +102,6 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
         }
 
-        else if (id == R.id.nav_home) {
-            Intent intent = new Intent(this, MainActivity.class);
-
-        }
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame,fragment).commit();
         }
@@ -115,5 +113,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onFragmentInteraction(String uri) {
         getSupportActionBar().setTitle(uri);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
